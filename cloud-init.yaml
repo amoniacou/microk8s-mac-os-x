@@ -1,0 +1,12 @@
+manage_resolv_conf: true
+resolv_conf:
+  nameservers: ["192.168.64.1", "8.8.4.4", "8.8.8.8"]
+  domain: kuber.local
+  options:
+    rotate: true
+    timeout: 1
+runcmd:
+  - sudo snap install microk8s --classic --channel=1.17/stable
+  - sudo microk8s.enable dns registry
+  - sudo usermod -a -G microk8s ubuntu
+  - iptables -P FORWARD ACCEPT
