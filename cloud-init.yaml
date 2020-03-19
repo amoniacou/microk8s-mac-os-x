@@ -10,3 +10,5 @@ runcmd:
   - sudo microk8s.enable dns registry
   - sudo usermod -a -G microk8s ubuntu
   - iptables -P FORWARD ACCEPT
+  - sudo sed -i "s|localhost:32000|docker.test:32000|g" /var/snap/microk8s/current/args/containerd-template.toml
+  - sudo systemctl restart snap.microk8s.daemon-containerd.service && microk8s.stop && microk8s.start

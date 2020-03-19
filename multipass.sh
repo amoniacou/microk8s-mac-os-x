@@ -45,7 +45,11 @@ address=/test/${ip}
 EOF
 echo "Running dnsmasq"
 sudo brew services start dnsmasq
+echo "\n\n\n"
+echo "========================================"
 echo "Please add 127.0.0.1 to your DNS servers"
+echo "========================================"
+echo "\n\n\n"
 echo "Merge kubectl configs"
 multipass exec microk8s-vm -- sudo /snap/bin/microk8s.config > ~/.kube/micro.config
 kmerge ~/.kube/micro.config
