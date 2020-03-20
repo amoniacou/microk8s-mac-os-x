@@ -1,0 +1,7 @@
+rbac:
+  create: false
+controller:
+  kind: DaemonSet
+  hostNetwork: true
+  reportNodeInternalIp: true
+  dnsPolicy: ClusterFirstWithHostNet

@@ -65,4 +65,4 @@ cert-manager jetstack/cert-manager \
 --namespace cert-manager \
 --version v0.13.0 --replace
 echo "Install ingress-nginx"
-helm install nginx-ingress stable/nginx-ingress
+helm install nginx-ingress stable/nginx-ingress -f ./ingress_values.yaml
