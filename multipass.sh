@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Checking..."
-vms=$(multipass list | grep microk8s-vm | wc -l)
+vms=$(multipass list 2>/dev/null | grep microk8s-vm | wc -l)
 
 if [[ ${vms} > 0 ]]; then
     echo "microk8s already installed!!!"
@@ -59,6 +59,7 @@ kubectl config use-context microk8s
 echo "Install cert manager"
 kubectl create namespace cert-manager
 helm repo add jetstack https://charts.jetstack.io
+helm repo add stable https://kubernetes-charts.storage.googleapis.com
 helm repo update
 helm install \
 cert-manager jetstack/cert-manager \
