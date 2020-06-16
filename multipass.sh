@@ -60,10 +60,12 @@ echo "Install cert manager"
 kubectl create namespace cert-manager
 helm repo add jetstack https://charts.jetstack.io
 helm repo add stable https://kubernetes-charts.storage.googleapis.com
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm repo update
 helm install \
 cert-manager jetstack/cert-manager \
 --namespace cert-manager \
---version v0.13.0 --replace
+--set installCRDs=true \
+--version v0.15.0 --replace
 echo "Install ingress-nginx"
-helm install nginx-ingress stable/nginx-ingress -f ./ingress_values.yaml
+helm install nginx-ingress ingress-nginx/ingress-nginx -f ./ingress_values.yaml

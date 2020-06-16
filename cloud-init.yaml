@@ -6,7 +6,7 @@ resolv_conf:
     rotate: true
     timeout: 1
 runcmd:
-  - sudo snap install microk8s --classic --channel=1.17/stable
+  - sudo snap install microk8s --classic --channel=1.18/stable
   - sudo microk8s.enable dns registry
   - sudo usermod -a -G microk8s ubuntu
   - iptables -P FORWARD ACCEPT
